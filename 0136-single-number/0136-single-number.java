@@ -1,9 +1,18 @@
 class Solution {
     public int singleNumber(int[] nums) {
-        int result = 0;
-        for (int num : nums) {
-            result ^= num; // XOR operation
+       Map <Integer,Integer> hm=new HashMap();
+       for(int i:nums){
+        if(hm.isEmpty() || !hm.containsKey(i)){hm.put(i,1);
+
         }
-        return result;
+        else if(hm.containsKey(i)){
+            hm.put(i,hm.get(i)+1);
+        }
+       }
+       for(int i:nums){
+        if(hm.get(i)==1) 
+        return i;
+       }
+       return nums[0];
     }
 }
