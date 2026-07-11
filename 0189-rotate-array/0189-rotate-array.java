@@ -1,11 +1,21 @@
 class Solution {
+    static void rot(int[] nums,int l,int r){
+           while(l<r){
+            int tem=nums[l];
+            nums[l]=nums[r];
+            nums[r]=tem;
+            l++;
+            r--;
+        }
+    }
     public void rotate(int[] nums, int k) {
-        int i=0,j=0;
-        int n=nums.length;
-        int temp[]=new int[n];
-        k=k%n;
-        for(i=0,j=k;i<n-k;i++,j++) temp[j]=nums[i];
-        for(j=0;i<n;i++,j++) temp[j]=nums[i];
-        for(i=0;i<n;i++) nums[i]=temp[i];
+        int l=0;
+        int r=nums.length-1;
+        // if(r<k) return ;
+        k=k%nums.length;
+        rot(nums,l,r);
+        rot(nums,l,k-1);
+         rot(nums,k,r);
+        System.out.print(nums);
     }
 }
