@@ -1,14 +1,11 @@
-from typing import List
-
 class Solution:
     def findDisappearedNumbers(self, nums: List[int]) -> List[int]:
-        for num in nums:
-            index = abs(num) - 1
-            if nums[index] > 0:
-                nums[index] = -nums[index]
+        a=[]
+        set1=set(nums)
+        for i in range(1,len(nums)+1):
+            if i not in set1:
+                a.append(i)
 
-        result = []
-        for i, num in enumerate(nums):
-            if num > 0:
-                result.append(i + 1)
-        return result
+        # if(len(a)==0):a.append(j+1)
+        return a
+        
